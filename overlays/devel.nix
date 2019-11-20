@@ -24,6 +24,7 @@ in
       goobook
       mps-youtube
       subliminal
+      python-language-server
       # neovim
       # terminal_velocity
     ]);
@@ -42,7 +43,6 @@ in
 
       ansible-lint
       vim-vint
-      ccls
       shfmt
       shellcheck
       htmlTidy
@@ -58,6 +58,8 @@ in
       vagrant
       platformio
       clang
+
+      ccls
       # binutils
     ;
   };
@@ -91,7 +93,10 @@ in
   };
 
   rustPkgs = super.rustPkgs or {} // {
-    inherit (self) rustup;
+    inherit (self)
+      rustup
+      rls
+    ;
   };
 
   rubyPkgs = super.rubyPkgs or {} // rec {
