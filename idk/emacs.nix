@@ -1,7 +1,7 @@
 self: super:
 
 {
-  emacsPkgs = super.emacsPkgs or {} // rec {
+  emacsPkgs = { super.emacsPkgs or {} } // rec {
     emacs = (super.emacsPackagesNg.overrideScope
         (self: super: self.melpaPackages)).emacsWithPackages (ep: with ep; [
       use-package

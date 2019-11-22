@@ -3,8 +3,8 @@
   allowUnfreeRedistributable = true;
 
   overlays = [
-    ./user.nix
     ./pkgmods.nix
+    ./user.nix
     ./epitech.nix
     ./devel.nix
     # ./emacs.nix  # why oh why

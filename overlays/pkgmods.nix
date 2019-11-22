@@ -2,20 +2,20 @@ self: super:
 
 let
   unstable = import (fetchTarball "channel:nixpkgs-unstable") {
-        config = self.config;
+        inherit (self) config;
       };
 
   snack = import (fetchTarball "https://github.com/nmattia/snack/tarball/master");
 
   nur = import (fetchTarball "https://github.com/nix-community/NUR/tarball/master") {
-        pkgs = self.pkgs;
+        inherit (self) pkgs;
       };
 
 in
 
 {
 
-  polybar = super.polybar.override {
+  polybar = unstable.polybar.override {
     githubSupport = true;
     i3Support = true;
     nlSupport = true;
@@ -37,15 +37,6 @@ in
   # compton = super.compton.override {
   #   configFile = ../../compton.conf;
   # };
-
-  unstablePackages = super.unstablePackages or {} // {
-    inherit (unstable)
-      polybar
-      # firefox
-      # minecraft
-      # nixfmt
-    ;
-  };
 
   randomGithubPackagesIFoundAround = {
     inherit (snack) snack-exe;
