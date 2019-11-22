@@ -1,7 +1,7 @@
 self: super:
 
 {
-  epiPkgs = { super.epiPkgs or {} } // {
+  epiPkgs = ( super.epiPkgs or {} ) // {
     inherit (self)
       # gcc
       gdb

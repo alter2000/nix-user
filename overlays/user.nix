@@ -2,7 +2,7 @@
 self: super:
 
 {
-  userPackages = { super.userPackages or {} } // {
+  userPackages = ( super.userPackages or {} ) // {
 
     nix-env-rebuild = super.writeScriptBin "nix-env-rebuild" ''
       #!${super.stdenv.shell}

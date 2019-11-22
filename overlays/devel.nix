@@ -8,7 +8,7 @@ let
       };
 in
 {
-  pyPkgs = { super.pyPkgs or {} } // {
+  pyPkgs = ( super.pyPkgs or {} ) // {
     pyEnv = self.python37.withPackages (ps: with ps; [
       ipython
       ipdb
@@ -32,7 +32,7 @@ in
     mypy = self.mypy;
   };
 
-  devPkgs = { super.devPkgs or {} } // {
+  devPkgs = ( super.devPkgs or {} ) // {
     inherit (self)
       gitRepo
       git-lfs
@@ -53,7 +53,7 @@ in
   # // (if self.config.virtualisation.libvirtd.enable then
   #       { inherit (self) virtmanager; } else {});
 
-  cPkgs = { super.cPkgs or {} } // {
+  cPkgs = ( super.cPkgs or {} ) // {
     inherit (self)
       vagrant
       platformio
@@ -64,7 +64,7 @@ in
     ;
   };
 
-  haskellPkgs = { super.haskellPkgs or {} } // {
+  haskellPkgs = ( super.haskellPkgs or {} ) // {
     env = self.haskellPackages.ghcWithHoogle (ps: with ps; [
       hlint
       hindent
@@ -92,21 +92,21 @@ in
     }; };
   };
 
-  rustPkgs = { super.rustPkgs or {} } // {
+  rustPkgs = ( super.rustPkgs or {} ) // {
     inherit (self)
       rustup
       rls
     ;
   };
 
-  rubyPkgs = { super.rubyPkgs or {} } // rec {
+  rubyPkgs = ( super.rubyPkgs or {} ) // rec {
     ruby = self.ruby_2_6;
     bundix = self.bundix.overrideAttrs (old: {
       inherit ruby;
     });
   };
 
-  jetbrainsPkgs = { super.jetbrainsPkgs or {} } // {
+  jetbrainsPkgs = ( super.jetbrainsPkgs or {} ) // {
     inherit (self)
       clion
       datagrip
@@ -115,7 +115,7 @@ in
     ;
   };
 
-  androidPkgs = { super.androidPkgs or {} } // {
+  androidPkgs = ( super.androidPkgs or {} ) // {
     inherit (self)
       android-studio
       apktool
@@ -123,7 +123,7 @@ in
     ;
   };
 
-  mdiPkgs = { super.mdiPkgs or {} } // {
+  mdiPkgs = ( super.mdiPkgs or {} ) // {
     inherit (self)
       tmate
       direnv
