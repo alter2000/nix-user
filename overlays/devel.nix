@@ -133,7 +133,7 @@ in
       gnumake
       kubectl
       minikube
-      kubernetes-helm
+      # kubernetes-helm
       # kind
       # kubernetes
       # vagrant
@@ -145,6 +145,7 @@ in
       godef
       golint
       gopkgs
+      go-langserver
     ;
     inherit (unstable) go;
     gotools = super.lowPrio self.gotools;

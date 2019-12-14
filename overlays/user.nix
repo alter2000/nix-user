@@ -45,8 +45,8 @@ self: super:
       go-mtpfs
 
       hledger
-      signal-desktop
-      # torbrowser
+      # signal-desktop
+      torbrowser
       macchanger
 
       imagemagick
