@@ -1,7 +1,7 @@
 self: super:
 
 let
-  unstable = import (fetchTarball "channel:nixpkgs-unstable") {
+  unstable = import ../unstable.nix {
         inherit (self) config;
       };
 

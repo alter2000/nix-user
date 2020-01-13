@@ -1,0 +1,3 @@
+{
+  fetchTarball "channel:nixpkgs-unstable"
+}
