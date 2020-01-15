@@ -12,13 +12,12 @@ self: super:
       fi
       PENV=(
               userPackages
-              # cPkgs
+              cPkgs
               pyPkgs
               # rubyPkgs
               # rustPkgs
               haskellPkgs
               devPkgs
-              mdiPkgs
       )
       exec nix-env -f '<nixpkgs>' -r -iA \
             ''${PENV[@]} \

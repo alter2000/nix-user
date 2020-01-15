@@ -123,35 +123,4 @@ in
     ;
   };
 
-  mdiPkgs = ( super.mdiPkgs or {} ) // {
-    inherit (self)
-      tmate
-      direnv
-      steam-run-native
-
-      dep
-      gnumake
-      kubectl
-      minikube
-      # kubernetes-helm
-      # kind
-      # kubernetes
-      # vagrant
-      # virtualboxHeadless
-
-      go-outline
-      gocode
-      gocode-gomod
-      godef
-      golint
-      gopkgs
-      go-langserver
-    ;
-    inherit (unstable) go;
-    gotools = super.lowPrio self.gotools;
-
-    vscode =
-      # import ../pkgs/vscode-with-extensions self super;
-      self.vscode;
-  };
 }
