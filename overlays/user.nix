@@ -13,6 +13,7 @@ self: super:
       PENV=(
               userPackages
               cPkgs
+              epiPkgs
               pyPkgs
               # rubyPkgs
               # rustPkgs

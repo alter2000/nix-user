@@ -3,7 +3,6 @@ self: super:
 {
   epiPkgs = ( super.epiPkgs or {} ) // {
     inherit (self)
-      # gcc
       gdb
       manpages
       valgrind
@@ -16,7 +15,9 @@ self: super:
 
       ansible
       sourcetrail
+      direnv
     ;
     inherit (self.ncurses) dev;
+    gcc = super.lowPrio self.gcc;
   };
 }

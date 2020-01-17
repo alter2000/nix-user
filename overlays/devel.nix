@@ -34,6 +34,7 @@ in
 
   devPkgs = ( super.devPkgs or {} ) // {
     inherit (self)
+      direnv
       gitRepo
       git-lfs
       patchelf
@@ -57,11 +58,11 @@ in
     inherit (self)
       vagrant
       platformio
-      clang
 
       ccls
       # binutils
     ;
+    clang = super.hiPrio self.clang;
   };
 
   haskellPkgs = ( super.haskellPkgs or {} ) // {
