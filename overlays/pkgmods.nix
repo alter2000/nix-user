@@ -1,9 +1,10 @@
 self: super:
 
 let
-  unstable = import ../unstable.nix {
-        inherit (self) config;
-      };
+  unstable = import (fetchTarball
+      "channel:nixpkgs-unstable"
+      # "https://github.com/nixos/nixpkgs/master"
+    ) { inherit (self) config; };
 
   snack = import (fetchTarball "https://github.com/nmattia/snack/tarball/master");
 
@@ -14,6 +15,12 @@ let
 in
 
 {
+
+  unstablePkgs = ( super.unstablePkgs or {} ) // {
+    inherit (unstable)
+      texlab
+    ;
+  };
 
   polybar = unstable.polybar.override {
     githubSupport = true;

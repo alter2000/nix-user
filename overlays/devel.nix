@@ -80,7 +80,6 @@ in
       stack
     ]);
 
-    # Install stable HIE for GHC 8.6.4
     hie = all-hies.unstableFallback.selection { selector = p: {
       inherit (p)
         ghc844
