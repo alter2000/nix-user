@@ -49,10 +49,10 @@ in
       htmlTidy
     ;
 
+    inherit (self) virtmanager;
+
     inherit (self) nix-prefetch-scripts;
   };
-  # // (if self.config.virtualisation.libvirtd.enable then
-  #       { inherit (self) virtmanager; } else {});
 
   cPkgs = ( super.cPkgs or {} ) // {
     inherit (self)
@@ -60,7 +60,7 @@ in
       platformio
 
       ccls
-      # binutils
+      binutils
     ;
     clang = super.hiPrio self.clang;
   };
@@ -82,12 +82,10 @@ in
 
     hie = all-hies.unstableFallback.selection { selector = p: {
       inherit (p)
-        ghc844
-        ghc863
-        ghc864
+        # ghc844
+        # ghc864
         ghc865
-        # ghc866
-        # ghc881
+        ghc881
       ;
     }; };
   };
@@ -123,4 +121,22 @@ in
     ;
   };
 
+  c68Pkgs = ( super.c68Pkgs or {} ) // {
+    inherit (self)
+      ansible
+      bind
+    ;
+
+    inherit (self.python37Packages)
+      yamllint
+    ;
+  };
+
+  asstPkgs = ( super.asstPkgs or {} ) // {
+    inherit (self)
+      pciutils
+      dfc
+      lsof
+    ;
+  };
 }

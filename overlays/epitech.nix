@@ -16,6 +16,7 @@ self: super:
       ansible
       sourcetrail
       direnv
+      nasm
     ;
     inherit (self.ncurses) dev;
     gcc = super.lowPrio self.gcc;

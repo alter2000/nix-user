@@ -11,14 +11,15 @@ self: super:
           PATH=${self.nix}/bin:$PATH
       fi
       PENV=(
-              userPackages
-              cPkgs
-              epiPkgs
-              pyPkgs
               # rubyPkgs
               # rustPkgs
-              haskellPkgs
+              asstPkgs
+              cPkgs
               devPkgs
+              epiPkgs
+              haskellPkgs
+              pyPkgs
+              userPackages
       )
       exec nix-env -f '<nixpkgs>' -r -iA \
             ''${PENV[@]} \
@@ -32,7 +33,6 @@ self: super:
       cachix
 
       alsaUtils
-      gparted
       # skype
 
       gnupg
@@ -64,7 +64,6 @@ self: super:
       urlscan
       zathura
       vimHugeX
-      cryptsetup
       pandoc
 
       maim
@@ -99,6 +98,14 @@ self: super:
       endless-sky
       minecraft
       jdk
+      tdesktop
+      mattermost-desktop
+      gparted
+      f2fs-tools
+      cryptsetup
+      hfsprogs
+      dosfstools
+      udftools
     ;
 
     inherit (self.xorg)
@@ -120,5 +127,4 @@ self: super:
 
     pboy = import (fetchTarball https://github.com/2mol/pboy/tarball/master);
   };
-
 }
