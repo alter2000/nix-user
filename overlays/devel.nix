@@ -80,7 +80,7 @@ in
       stack
     ]);
 
-    hie = all-hies.unstableFallback.selection { selector = p: {
+    hie = all-hies.selection { selector = p: {
       inherit (p)
         # ghc844
         # ghc864
@@ -134,9 +134,10 @@ in
 
   asstPkgs = ( super.asstPkgs or {} ) // {
     inherit (self)
-      pciutils
       dfc
       lsof
+      inetutils
+      pciutils
     ;
   };
 }
