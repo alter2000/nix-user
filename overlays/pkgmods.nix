@@ -18,7 +18,10 @@ in
 
   unstablePkgs = ( super.unstablePkgs or {} ) // {
     inherit (unstable)
+      torbrowser
       texlab
+      minecraft-launcher
+      niv
     ;
   };
 

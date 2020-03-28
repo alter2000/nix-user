@@ -46,7 +46,6 @@ self: super:
 
       hledger
       # signal-desktop
-      torbrowser
       macchanger
 
       imagemagick
@@ -96,7 +95,6 @@ self: super:
     inherit (self)
       steam
       endless-sky
-      minecraft
       jdk
       tdesktop
       mattermost-desktop

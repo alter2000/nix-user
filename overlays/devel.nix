@@ -134,10 +134,12 @@ in
 
   asstPkgs = ( super.asstPkgs or {} ) // {
     inherit (self)
+      pciutils
+      inetutils
       dfc
       lsof
-      inetutils
-      pciutils
+      nix-index
+      # niv
     ;
   };
 }

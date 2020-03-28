@@ -17,6 +17,7 @@ self: super:
       sourcetrail
       direnv
       nasm
+      radare2-cutter
     ;
     inherit (self.ncurses) dev;
     gcc = super.lowPrio self.gcc;
