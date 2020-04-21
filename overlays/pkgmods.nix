@@ -6,7 +6,7 @@ let
       # "https://github.com/nixos/nixpkgs/master"
     ) { inherit (self) config; };
 
-  snack = import (fetchTarball "https://github.com/nmattia/snack/tarball/master");
+  own = import ../pkgs/top-level/all-packages.nix { inherit (self) config; };
 
   nur = import (fetchTarball "https://github.com/nix-community/NUR/tarball/master") {
         inherit (self) pkgs;
@@ -33,23 +33,6 @@ in
     pulseSupport = true;
   };
 
-  vimHugeX = super.vimHugeX.override {
-    python = self.python3;
-  };
-
-  sudo = super.sudo.override {
-    withInsults = true;
-  };
-
-  endless-sky = super.callPackage ../pkgs/endless-sky {};
-  slurm-git = super.callPackage ../pkgs/slurm-git {};
-
-  # compton = super.compton.override {
-  #   configFile = ../../compton.conf;
-  # };
-
-  randomGithubPackagesIFoundAround = {
-    inherit (snack) snack-exe;
-  };
+  # sudo = super.sudo.override { withInsults = true; };
 
 }

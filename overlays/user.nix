@@ -123,6 +123,5 @@ self: super:
       # pkgFilter = pkg: pkg.tlType == "run" || pkg.tlType == "bin" || pkg.pname == "cm-super";
     };
 
-    pboy = import (fetchTarball https://github.com/2mol/pboy/tarball/master);
   };
 }

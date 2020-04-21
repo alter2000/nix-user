@@ -3,9 +3,10 @@ self: super:
 let
   all-hies = import (fetchTarball "https://github.com/infinisil/all-hies/tarball/master") {};
 
-  unstable = import ../unstable.nix {
-        inherit (self) config;
-      };
+  unstable = import (fetchTarball
+      "channel:nixpkgs-unstable"
+      # "https://github.com/nixos/nixpkgs/master"
+    ) { inherit (self) config; };
 in
 {
   pyPkgs = ( super.pyPkgs or {} ) // {
@@ -59,9 +60,9 @@ in
       vagrant
       platformio
 
-      ccls
       binutils
     ;
+    inherit (unstable) ccls;
     clang = super.hiPrio self.clang;
   };
 
@@ -136,9 +137,12 @@ in
     inherit (self)
       pciutils
       inetutils
+      sysstat
+      pstree
       dfc
       lsof
       nix-index
+      ttyplot
       # niv
     ;
   };
