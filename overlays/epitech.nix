@@ -6,8 +6,10 @@ self: super:
       gdb
       manpages
       valgrind
+      netcat
 
       gnumake
+      bear
       icdiff
       nixops
       nodejs

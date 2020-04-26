@@ -18,6 +18,7 @@ self: super:
               devPkgs
               epiPkgs
               haskellPkgs
+              reflexPkgs
               pyPkgs
               userPackages
       )
@@ -27,31 +28,20 @@ self: super:
     '';
 
     inherit (self)
-      # xmonad-with-packages
-      nodejs
       # busybox
-      cachix
-
       alsaUtils
-      # skype
-
       gnupg
       jrnl
       keynav
-      taskell
       zip
       sxhkd
       firefox
       go-mtpfs
-
       hledger
-      # signal-desktop
-      macchanger
 
       imagemagick
       imv
       feh
-      autorandr
       libnotify
       msmtp
       neomutt
@@ -64,10 +54,10 @@ self: super:
       zathura
       vimHugeX
       pandoc
+      torbrowser
 
       maim
       neofetch
-      newsboat
       ncmpcpp
       weechat
       up  # ultimate plumber
@@ -81,23 +71,22 @@ self: super:
       mpd
       mpv
 
-      teeworlds
-      termite
       alacritty
       toilet
       transmission-gtk
 
       lolcat
-      beets
-      xbanish
+      # beets
     ;
 
     inherit (self)
+      teeworlds
+      termite
       steam
-      endless-sky
       jdk
       tdesktop
       mattermost-desktop
+      # signal-desktop
       gparted
       f2fs-tools
       cryptsetup
