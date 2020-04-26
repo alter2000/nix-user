@@ -1,8 +1,6 @@
 self: super:
 
 let
-  all-hies = import (fetchTarball "https://github.com/infinisil/all-hies/tarball/master") {};
-
   unstable = import (fetchTarball
       "channel:nixpkgs-unstable"
       # "https://github.com/nixos/nixpkgs/master"
@@ -60,35 +58,10 @@ in
       vagrant
       platformio
 
-      binutils
+      # binutils
     ;
     inherit (unstable) ccls;
     clang = super.hiPrio self.clang;
-  };
-
-  haskellPkgs = ( super.haskellPkgs or {} ) // {
-    env = self.haskellPackages.ghcWithHoogle (ps: with ps; [
-      hlint
-      hindent
-      ghcid
-      hasktags
-
-      markdown-unlit
-      stylish-haskell
-
-      cabal-install
-      cabal2nix
-      stack
-    ]);
-
-    hie = all-hies.selection { selector = p: {
-      inherit (p)
-        # ghc844
-        # ghc864
-        ghc865
-        ghc881
-      ;
-    }; };
   };
 
   rustPkgs = ( super.rustPkgs or {} ) // {

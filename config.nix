@@ -7,6 +7,7 @@
     ./user.nix
     ./epitech.nix
     ./devel.nix
+    ./hspkgs.nix
     # ./emacs.nix  # why oh why
   ];
 
