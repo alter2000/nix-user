@@ -1,6 +1,7 @@
 {
   allowUnfree = true;
   allowUnfreeRedistributable = true;
+  # allowBroken = true;
 
   overlays = [
     ./pkgmods.nix
