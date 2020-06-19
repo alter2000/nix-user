@@ -18,7 +18,6 @@ in
 
   unstablePkgs = ( super.unstablePkgs or {} ) // {
     inherit (unstable)
-      texlab
       minecraft
       niv
     ;
@@ -26,7 +25,7 @@ in
     inherit (own)
       endless-sky
       pboy
-      neuron
+      # neuron
     ;
   };
 

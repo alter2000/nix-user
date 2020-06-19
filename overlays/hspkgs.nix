@@ -17,6 +17,7 @@ in
       hlint
       hindent
       ghcid
+      ghcide
       hasktags
 
       markdown-unlit
@@ -28,14 +29,14 @@ in
       stack
     ]);
 
-    hie = all-hies.selection { selector = p: {
-      inherit (p)
-        # ghc844
-        # ghc864
-        ghc865
-        ghc881
-      ;
-    }; };
+    # hie = all-hies.selection { selector = p: {
+    #   inherit (p)
+    #     # ghc844
+    #     # ghc864
+    #     ghc865
+    #     ghc881
+    #   ;
+    # }; };
   };
 
   reflexPkgs = ( super.reflexPkgs or {} ) // {

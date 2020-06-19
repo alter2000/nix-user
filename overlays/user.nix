@@ -21,6 +21,7 @@ self: super:
               reflexPkgs
               pyPkgs
               userPackages
+              unstablePkgs
       )
       exec nix-env -f '<nixpkgs>' -r -iA \
             ''${PENV[@]} \
@@ -85,14 +86,12 @@ self: super:
       steam
       jdk
       tdesktop
-      mattermost-desktop
-      # signal-desktop
+      # mattermost-desktop
       gparted
       f2fs-tools
       cryptsetup
-      hfsprogs
       dosfstools
-      udftools
+      # udftools
     ;
 
     inherit (self.xorg)

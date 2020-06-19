@@ -22,13 +22,11 @@ in
 
       goobook
       mps-youtube
-      subliminal
       python-language-server
       # neovim
-      # terminal_velocity
     ]);
-    tim = (super.callPackage ../pkgs/tim.nix);
-    mypy = self.mypy;
+    # tim = (super.callPackage ../pkgs/tim.nix);
+    # mypy = self.mypy;
   };
 
   devPkgs = ( super.devPkgs or {} ) // {
