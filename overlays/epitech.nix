@@ -7,8 +7,10 @@ self: super:
       manpages
       valgrind
       netcat
+      binutils-unwrapped
 
       gnumake
+      cmake
       bear
       icdiff
       nixops
@@ -20,6 +22,8 @@ self: super:
       direnv
       nasm
       radare2-cutter
+      appimage-run
+      pkg-config
     ;
     inherit (self.ncurses) dev;
     gcc = super.lowPrio self.gcc;

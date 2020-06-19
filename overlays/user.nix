@@ -62,6 +62,7 @@ self: super:
       ncmpcpp
       weechat
       up  # ultimate plumber
+      cozy
 
       ncdu
       pavucontrol
@@ -77,6 +78,7 @@ self: super:
       transmission-gtk
 
       lolcat
+      ffmpeg-full
       # beets
     ;
 

@@ -34,6 +34,7 @@ in
       direnv
       gitRepo
       git-lfs
+      lazygit
       patchelf
 
       tcsh
@@ -115,6 +116,7 @@ in
       nix-index
       ttyplot
       # niv
+      texlab
     ;
   };
 }
