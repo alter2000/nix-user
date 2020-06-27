@@ -8,10 +8,14 @@ let
   ghPkg = x: aPkg ("https://github.com/" + x + "/tarball/master");
 
   snack  = (ghPkg "nmattia/snack").snack-exe;
+
   pboy   = ghPkg "2mol/pboy";
+
   neuron = let s = fetchGit { url = "https://github.com/srid/neuron"; ref = "master"; };
             in import s.outPath { gitRev = s.shortRev; };
   # neuronSrc = fetchGit { url = "https://github.com/srid/neuron"; ref = "master"; };
+
+  ghcide = import (builtins.fetchTarball "https://github.com/cachix/ghcide-nix/tarball/master") {};
 
 in
 rec {
@@ -24,6 +28,7 @@ rec {
     snack
     pboy
     neuron
+    ghcide
   ;
   # neuron = import neuronSrc.outPath { gitRev = neuronSrc.shortRev; };
 

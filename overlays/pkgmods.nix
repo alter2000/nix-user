@@ -27,6 +27,8 @@ in
       pboy
       # neuron
     ;
+
+    inherit (own.ghcide) ghcide-ghc883;
   };
 
   polybar = unstable.polybar.override {

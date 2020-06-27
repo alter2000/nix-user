@@ -17,7 +17,7 @@ in
       hlint
       hindent
       ghcid
-      ghcide
+      # ghcide
       hasktags
 
       markdown-unlit
