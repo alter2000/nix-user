@@ -46,6 +46,8 @@ in
     };
   });
 
+  ncmpcpp = super.ncmpcpp.override { visualizerSupport = true; };
+
   # sudo = super.sudo.override { withInsults = true; };
 
 }

@@ -24,6 +24,8 @@ rec {
 
   slurm-git = pkgs.callPackage ../slurm-git {};
 
+  papermc = pkgs.callPackage ../papermc {};
+
   inherit
     snack
     pboy
