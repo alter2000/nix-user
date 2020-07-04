@@ -53,7 +53,6 @@ self: super:
       passff-host
       urlscan
       zathura
-      vimHugeX
       pandoc
       torbrowser
 

@@ -12,9 +12,7 @@ let
         inherit (self) pkgs;
       };
 
-in
-
-{
+in rec {
 
   unstablePkgs = ( super.unstablePkgs or {} ) // {
     inherit (unstable)
@@ -29,6 +27,7 @@ in
     ;
 
     inherit (own.ghcide) ghcide-ghc883;
+    inherit vimpp;
   };
 
   polybar = unstable.polybar.override {
@@ -47,6 +46,17 @@ in
   });
 
   ncmpcpp = super.ncmpcpp.override { visualizerSupport = true; };
+  vimpp = super.vim_configurable.overrideAttrs (old: {
+    multibyteSupport = true;
+    netbeansSupport = false;
+    ftNixSupport = false;
+    configureFlags = let inherit (super.lib) filter hasPrefix;
+      in filter (f: !hasPrefix "--disable-fontset" f) (old.configureFlags ++ [
+          "--enable-autoservername" "--enable-fontset" "--enable-multibyte"
+          "--disable-netbeans"
+    ]);
+    # [ "python3" "X11" "xfontset" "autoservername" ];
+  });
 
   # sudo = super.sudo.override { withInsults = true; };
 
