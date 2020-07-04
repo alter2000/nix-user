@@ -38,6 +38,8 @@ in rec {
     pulseSupport = true;
   };
 
+  ncmpcpp = super.ncmpcpp.override { visualizerSupport = true; };
+
   torbrowser = super.lib.overrideDerivation super.torbrowser (old: {
     src = super.fetchurl {
       url = "https://dist.torproject.org/torbrowser/9.0.9/tor-browser-linux64-9.0.9_en-US.tar.xz";
@@ -45,7 +47,12 @@ in rec {
     };
   });
 
-  ncmpcpp = super.ncmpcpp.override { visualizerSupport = true; };
+  tmux = super.lib.overrideDerivation super.tmux (old: {
+    buildInputs = old.buildInputs ++ [ super.utf8proc ];
+    # nativeBuildInputs = old.nativeBuildInputs ++ [ super.utf8proc ];
+    configureFlags = old.configureFlags ++ [ "--enable-utf8proc" ];
+  });
+
   vimpp = super.vim_configurable.overrideAttrs (old: {
     multibyteSupport = true;
     netbeansSupport = false;
