@@ -12,7 +12,7 @@ self: super:
       fi
       PENV=(
               devPkgs
-              epiPkgs
+              # epiPkgs
               haskellPkgs
               userPackages
               unstablePkgs

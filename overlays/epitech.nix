@@ -7,6 +7,7 @@ self: super:
       manpages
       valgrind
       netcat
+      gcc-unwrapped
       binutils-unwrapped
 
       gnumake
@@ -26,6 +27,5 @@ self: super:
       pkg-config
     ;
     inherit (self.ncurses) dev;
-    gcc = super.lowPrio self.gcc;
   };
 }
