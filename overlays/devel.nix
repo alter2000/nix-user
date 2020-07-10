@@ -6,7 +6,7 @@ let
       # "https://github.com/nixos/nixpkgs/master"
     ) { inherit (self) config; };
 in
-{
+rec {
   pyPkgs = ( super.pyPkgs or {} ) // {
     pyEnv = self.python37.withPackages (ps: with ps; [
       ipython
@@ -36,21 +36,19 @@ in
       git-lfs
       lazygit
       patchelf
-
       tcsh
-      universal-ctags
-
-      ansible-lint
-      vim-vint
-      shfmt
-      shellcheck
-      htmlTidy
     ;
 
     inherit (self) virtmanager;
 
     inherit (self) nix-prefetch-scripts;
-  };
+  }
+  // asstPkgs
+  // lintPkgs
+  // pyPkgs
+  // rubyPkgs
+  // rustPkgs
+  ;
 
   cPkgs = ( super.cPkgs or {} ) // {
     inherit (self)
@@ -66,7 +64,6 @@ in
   rustPkgs = ( super.rustPkgs or {} ) // {
     inherit (self)
       rustup
-      rls
     ;
   };
 
@@ -118,5 +115,17 @@ in
       # niv
       texlab
     ;
+  };
+
+  lintPkgs = ( super.lintPkgs or {} ) // {
+    inherit (self)
+      ansible-lint
+      vim-vint
+      shfmt
+      shellcheck
+      htmlTidy
+      universal-ctags
+    ;
+    inherit (self.nodePackages) bash-language-server;
   };
 }

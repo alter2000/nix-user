@@ -11,15 +11,9 @@ self: super:
           PATH=${self.nix}/bin:$PATH
       fi
       PENV=(
-              # rubyPkgs
-              # rustPkgs
-              asstPkgs
-              cPkgs
               devPkgs
               epiPkgs
               haskellPkgs
-              reflexPkgs
-              pyPkgs
               userPackages
               unstablePkgs
       )
@@ -39,6 +33,7 @@ self: super:
       firefox
       go-mtpfs
       hledger
+      fd
 
       imagemagick
       imv

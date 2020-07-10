@@ -11,7 +11,7 @@ let
       "https://github.com/obsidiansystems/obelisk/tarball/master"
     ) { inherit (self) config; };
 in
-{
+rec {
   haskellPkgs = ( super.haskellPkgs or {} ) // {
     henv = self.haskellPackages.ghcWithHoogle (ps: with ps; [
       hlint
@@ -37,7 +37,7 @@ in
     #     ghc881
     #   ;
     # }; };
-  };
+  } // reflexPkgs;
 
   reflexPkgs = ( super.reflexPkgs or {} ) // {
     obelisk = obSrc.command;
