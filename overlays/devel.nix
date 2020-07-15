@@ -113,18 +113,20 @@ rec {
       nix-index
       ttyplot
       # niv
-      texlab
+      gnumake
     ;
   };
 
   lintPkgs = ( super.lintPkgs or {} ) // {
     inherit (self)
+      nodejs
       ansible-lint
       vim-vint
       shfmt
       shellcheck
       htmlTidy
       universal-ctags
+      texlab
     ;
     inherit (self.nodePackages) bash-language-server;
   };

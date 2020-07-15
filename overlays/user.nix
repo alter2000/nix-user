@@ -57,6 +57,7 @@ self: super:
       weechat
       up  # ultimate plumber
       cozy
+      lollypop
 
       ncdu
       pavucontrol

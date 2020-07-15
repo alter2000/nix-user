@@ -14,11 +14,8 @@ self: super:
       cmake
       bear
       icdiff
-      nixops
-      nodejs
       inkscape
 
-      ansible
       sourcetrail
       direnv
       nasm
