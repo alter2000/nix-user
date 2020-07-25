@@ -26,6 +26,8 @@ rec {
 
   papermc = pkgs.callPackage ../papermc {};
 
+  xmonad = pkgs.callPackage /home/alter2000/.config/xmonad/nix {};
+
   inherit
     snack
     pboy

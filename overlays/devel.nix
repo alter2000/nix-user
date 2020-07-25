@@ -7,28 +7,6 @@ let
     ) { inherit (self) config; };
 in
 rec {
-  pyPkgs = ( super.pyPkgs or {} ) // {
-    pyEnv = self.python37.withPackages (ps: with ps; [
-      ipython
-      ipdb
-      python
-      pip
-      virtualenv
-      requests
-
-      yapf
-      pylint
-      flake8
-
-      goobook
-      mps-youtube
-      python-language-server
-      # neovim
-    ]);
-    # tim = (super.callPackage ../pkgs/tim.nix);
-    # mypy = self.mypy;
-  };
-
   devPkgs = ( super.devPkgs or {} ) // {
     inherit (self)
       direnv
@@ -72,6 +50,28 @@ rec {
     bundix = self.bundix.overrideAttrs (old: {
       inherit ruby;
     });
+  };
+
+  pyPkgs = ( super.pyPkgs or {} ) // {
+    pyEnv = self.python37.withPackages (ps: with ps; [
+      ipython
+      ipdb
+      python
+      pip
+      virtualenv
+      requests
+
+      yapf
+      pylint
+      flake8
+
+      goobook
+      mps-youtube
+      python-language-server
+      # neovim
+    ]);
+    # tim = (super.callPackage ../pkgs/tim.nix);
+    # mypy = self.mypy;
   };
 
   jetbrainsPkgs = ( super.jetbrainsPkgs or {} ) // {
@@ -127,6 +127,7 @@ rec {
       htmlTidy
       universal-ctags
       texlab
+      # nix-direnv
     ;
     inherit (self.nodePackages) bash-language-server;
   };

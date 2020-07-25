@@ -32,10 +32,10 @@ in rec {
 
   polybar = unstable.polybar.override {
     githubSupport = true;
-    i3Support = true;
-    nlSupport = true;
     mpdSupport = true;
     pulseSupport = true;
+    nlSupport = true;
+    i3Support = true;
   };
 
   ncmpcpp = super.ncmpcpp.override { visualizerSupport = true; };

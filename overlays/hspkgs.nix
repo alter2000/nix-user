@@ -10,6 +10,17 @@ let
   obSrc = import (fetchTarball
       "https://github.com/obsidiansystems/obelisk/tarball/master"
     ) { inherit (self) config; };
+
+  # TODO: add these to the global project
+  hsLibs = p: with p; [
+    # async
+    # bytestring
+    # conduit
+    # filepath
+    # mtl
+    # text
+    # turtle
+  ];
 in
 rec {
   haskellPkgs = ( super.haskellPkgs or {} ) // {
@@ -20,14 +31,14 @@ rec {
       # ghcide
       hasktags
 
-      markdown-unlit
+      unlit
       # stylish-haskell
       # threadscope
 
       cabal-install
       cabal2nix
       stack
-    ]);
+    ] ++ hsLibs ps);
 
     # hie = all-hies.selection { selector = p: {
     #   inherit (p)
