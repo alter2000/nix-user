@@ -22,7 +22,7 @@ in {
 
     inherit (own)
       endless-sky
-      pboy
+      # pboy
       # neuron
     ;
 
@@ -42,8 +42,8 @@ in {
 
   torbrowser = super.lib.overrideDerivation super.torbrowser (old: {
     src = super.fetchurl {
-      url = "https://dist.torproject.org/torbrowser/9.0.9/tor-browser-linux64-9.0.9_en-US.tar.xz";
-      sha256 = "0ws4s0jn559j1ih60wqspxvr5wpqww29kzk0xzzbr56wfyahp4fg";
+      url = "https://dist.torproject.org/torbrowser/9.5.4/tor-browser-linux64-9.5.4_en-US.tar.xz";
+      sha256 = "0kkgsra7rgy167h8jh54gjn8ncajbj9krqfmqcvcba700kdq2vax";
     };
   });
 

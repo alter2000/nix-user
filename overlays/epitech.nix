@@ -10,6 +10,7 @@ self: super:
       direnv
       radare2-cutter
       appimage-run
+      docker-compose
     ;
     inherit (self.ncurses) dev;
   }

@@ -31,7 +31,7 @@ in {
       jrnl
       keynav
       sxhkd
-      firefox
+      # firefox
       alacritty
       gnupg
       hledger
@@ -77,7 +77,7 @@ in {
       tig
     ;
 
-    inherit (own) xmonad;
+    # inherit (own) xmonad;
   }
   // self.gamePkgs
   // self.filePkgs

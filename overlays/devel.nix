@@ -68,6 +68,7 @@ in
       goobook
       mps-youtube
       python-language-server
+      jedi
       # neovim
     ]);
     # tim = (super.callPackage ../pkgs/tim.nix);
