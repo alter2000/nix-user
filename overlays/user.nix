@@ -3,21 +3,22 @@ self: super:
 
 let
   own = import ../pkgs/top-level/all-packages.nix { inherit (self) system; };
-in rec {
+in {
   userPackages = ( super.userPackages or {} ) // {
 
     nix-env-rebuild = super.writeScriptBin "nix-env-rebuild" ''
       #!${super.stdenv.shell}
       if ! command -v nix-env &>/dev/null; then
-          echo "warning: nix-env was not found in PATH, add nix to userPackages" >&2
-          PATH=${self.nix}/bin:$PATH
+        echo "warning: nix-env was not found in PATH, add nix to userPackages" >&2
+        PATH=${self.nix}/bin:$PATH
       fi
       PENV=(
-              devPkgs
-              # epiPkgs
-              haskellPkgs
-              userPackages
-              unstablePkgs
+        devPkgs
+        epiPkgs
+        haskellPkgs
+        haskellPkgs.henv
+        userPackages
+        unstablePkgs
       )
       exec nix-env -f '<nixpkgs>' -r -iA \
             ''${PENV[@]} \
@@ -78,14 +79,16 @@ in rec {
 
     inherit (own) xmonad;
   }
-  // gamePkgs
-  // filePkgs
+  // self.gamePkgs
+  // self.filePkgs
+  // self.streamPkgs
   ;
 
   filePkgs = ( super.filePkgs or {} ) // {
     inherit (self)
       cryptsetup
       dosfstools
+      mtools
       f2fs-tools
       go-mtpfs
       gparted

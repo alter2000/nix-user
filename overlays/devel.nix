@@ -6,7 +6,7 @@ let
       # "https://github.com/nixos/nixpkgs/master"
     ) { inherit (self) config; };
 in
-rec {
+{
   devPkgs = ( super.devPkgs or {} ) // {
     inherit (self)
       direnv
@@ -21,11 +21,11 @@ rec {
 
     inherit (self) nix-prefetch-scripts;
   }
-  // asstPkgs
-  // lintPkgs
-  // pyPkgs
-  // rubyPkgs
-  // rustPkgs
+  // self.asstPkgs
+  // self.lintPkgs
+  // self.pyPkgs
+  // self.rubyPkgs
+  // self.rustPkgs
   ;
 
   cPkgs = ( super.cPkgs or {} ) // {

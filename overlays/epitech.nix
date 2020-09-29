@@ -3,26 +3,40 @@ self: super:
 {
   epiPkgs = ( super.epiPkgs or {} ) // {
     inherit (self)
-      gdb
       manpages
-      valgrind
-      netcat
-      gcc-unwrapped
-      binutils-unwrapped
+      icdiff
+      inkscape
+      sourcetrail
+      direnv
+      radare2-cutter
+      appimage-run
+    ;
+    inherit (self.ncurses) dev;
+  }
+  // self.epiBuildPkgs
+  // self.epiTestPkgs
+  ;
 
+  epiBuildPkgs = ( super.epiBuildPkgs or {} ) // {
+    inherit (self)
       gnumake
       cmake
       bear
-      icdiff
-      inkscape
-
-      sourcetrail
-      direnv
-      nasm
-      radare2-cutter
-      appimage-run
       pkg-config
+
+      nasm
+      gcc-unwrapped
+      binutils-unwrapped
     ;
-    inherit (self.ncurses) dev;
+  };
+
+  epiTestPkgs = ( super.epiTestPkgs or {} ) // {
+    inherit (self)
+      gdb
+      valgrind
+      netcat
+      # github-cli
+      # gitkraken
+    ;
   };
 }

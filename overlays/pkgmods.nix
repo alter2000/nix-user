@@ -12,7 +12,7 @@ let
         inherit (self) pkgs;
       };
 
-in rec {
+in {
 
   unstablePkgs = ( super.unstablePkgs or {} ) // {
     inherit (unstable)
@@ -27,7 +27,7 @@ in rec {
     ;
 
     inherit (own.ghcide) ghcide-ghc883;
-    inherit vimpp;
+    inherit (self) vimpp;
   };
 
   polybar = unstable.polybar.override {
