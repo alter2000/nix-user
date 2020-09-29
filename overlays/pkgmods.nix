@@ -26,7 +26,7 @@ in {
       # neuron
     ;
 
-    inherit (own.ghcide) ghcide-ghc883;
+    inherit (own.ghcide) ghcide-ghc884;
     inherit (self) vimpp;
   };
 

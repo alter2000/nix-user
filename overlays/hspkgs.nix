@@ -1,6 +1,7 @@
 self: super:
 
 let
+  hspkgset = self.haskell.packages.ghc883;
   all-hies = import (fetchTarball "https://github.com/infinisil/all-hies/tarball/master") {};
 
   unstable = import (fetchTarball
@@ -13,22 +14,19 @@ let
 
   # TODO: add these to the global project
   hsLibs = p: with p; [
-    # async
-    # bytestring
-    # conduit
-    # filepath
-    # mtl
-    # text
-    # turtle
+    async
+    bytestring
+    conduit
+    filepath
+    mtl
+    text
+    turtle
   ];
 in
-rec {
+{
   haskellPkgs = ( super.haskellPkgs or {} ) // {
-    henv = self.haskellPackages.ghcWithHoogle (ps: with ps; [
-      hlint
-      hindent
-      ghcid
       # ghcide
+    henv = hspkgset.ghcWithHoogle (ps: with ps; [
       hasktags
 
       unlit
@@ -40,15 +38,12 @@ rec {
       stack
     ] ++ hsLibs ps);
 
-    # hie = all-hies.selection { selector = p: {
-    #   inherit (p)
-    #     # ghc844
-    #     # ghc864
-    #     ghc865
-    #     ghc881
-    #   ;
-    # }; };
-  } // reflexPkgs;
+    hie = all-hies.selection { selector = p: {
+      inherit (p) ghc884;
+    }; };
+  }
+  # // self.reflexPkgs
+  ;
 
   reflexPkgs = ( super.reflexPkgs or {} ) // {
     obelisk = obSrc.command;
