@@ -28,15 +28,21 @@ in
       # ghcide
     henv = hspkgset.ghcWithHoogle (ps: with ps; [
       hasktags
-
-      unlit
-      # stylish-haskell
+      stylish-haskell
       # threadscope
+      unlit
+      # patat
+      # arbtt
+    ]);
+    # ++ hsLibs ps);
 
+    inherit (self)
+      ghcid
+      hlint
+      stack
       cabal-install
       cabal2nix
-      stack
-    ] ++ hsLibs ps);
+    ;
 
     hie = all-hies.selection { selector = p: {
       inherit (p) ghc884;
