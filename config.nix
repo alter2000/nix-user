@@ -4,11 +4,11 @@
   # allowBroken = true;
 
   overlays = [
-    ./pkgmods.nix
     ./user.nix
-    ./epitech.nix
     ./devel.nix
+    ./epitech.nix
     ./hspkgs.nix
+    ./pkgmods.nix
     # ./emacs.nix  # why oh why
   ];
 

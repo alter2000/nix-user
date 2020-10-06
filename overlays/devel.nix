@@ -45,10 +45,10 @@ in
     ;
   };
 
-  rubyPkgs = ( super.rubyPkgs or {} ) // rec {
+  rubyPkgs = ( super.rubyPkgs or {} ) // {
     ruby = self.ruby_2_6;
     bundix = self.bundix.overrideAttrs (old: {
-      inherit ruby;
+      ruby = self.ruby_2_6;
     });
   };
 
