@@ -43,7 +43,7 @@ in
       cabal-install
       cabal2nix
     ;
-
+    inherit (unstable.haskellPackages) implicit-hie;
     hie = all-hies.selection { selector = p: {
       inherit (p) ghc884;
     }; };
