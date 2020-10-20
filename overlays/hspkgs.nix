@@ -30,17 +30,16 @@ in
       unlit
       # patat
       # arbtt
-    ]);
-    # ++ hsLibs ps);
+      pretty-simple
+    ] ++ hsLibs ps);
 
     inherit (self)
-      ghcid
       hlint
       stack
       cabal-install
       cabal2nix
     ;
-    inherit (unstable.haskellPackages) implicit-hie;
+    inherit (unstable.haskellPackages) implicit-hie haskell-language-server;
     # hie = all-hies.selection { selector = p: {
     #   inherit (p) ghc884;
     # }; };
