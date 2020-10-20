@@ -19,6 +19,7 @@ in {
         haskellPkgs.henv
         userPackages
         unstablePkgs
+        webPkgs
       )
       exec nix-env -f '<nixpkgs>' -r -iA \
             ''${PENV[@]} \

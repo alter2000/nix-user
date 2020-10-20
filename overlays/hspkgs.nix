@@ -2,14 +2,11 @@ self: super:
 
 let
   hspkgset = self.haskell.packages.ghc883;
-  all-hies = import (fetchTarball "https://github.com/infinisil/all-hies/tarball/master") {};
+  # all-hies = import (fetchTarball "https://github.com/infinisil/all-hies/tarball/master") {};
 
   unstable = import (fetchTarball
       "channel:nixpkgs-unstable"
       # https://github.com/nixos/nixpkgs/master
-    ) { inherit (self) config; };
-  obSrc = import (fetchTarball
-      "https://github.com/obsidiansystems/obelisk/tarball/master"
     ) { inherit (self) config; };
 
   # TODO: add these to the global project
@@ -44,14 +41,9 @@ in
       cabal2nix
     ;
     inherit (unstable.haskellPackages) implicit-hie;
-    hie = all-hies.selection { selector = p: {
-      inherit (p) ghc884;
-    }; };
+    # hie = all-hies.selection { selector = p: {
+    #   inherit (p) ghc884;
+    # }; };
   }
-  # // self.reflexPkgs
   ;
-
-  reflexPkgs = ( super.reflexPkgs or {} ) // {
-    obelisk = obSrc.command;
-  };
 }
