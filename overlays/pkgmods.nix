@@ -8,26 +8,27 @@ let
 
   own = import ../pkgs/top-level/all-packages.nix { inherit (self) system; };
 
-  nur = import (fetchTarball "https://github.com/nix-community/NUR/tarball/master") {
-        inherit (self) pkgs;
-      };
+  nur = import (super.fetchFromGitHub {
+      owner = "nix-community";
+      repo = "NUR";
+      rev = "a222153291e7754422a6c287f6f441b6cea6e0b6";
+      sha256 = "0i6ysnypvva4yss68zsabmkqgynl88iilrr47c00bl1kg962ikmi";
+    }) { inherit (self) pkgs; };
 
 in {
+  inherit own;
+  inherit unstable;
+  inherit nur;
 
   unstablePkgs = ( super.unstablePkgs or {} ) // {
     inherit (unstable)
       minecraft
       niv
-    ;
-
-    inherit (own)
-      endless-sky
-      # pboy
-      # neuron
+      kitty
     ;
 
     inherit (own.ghcide) ghcide-ghc884;
-    inherit (self) vimpp;
+    # inherit (self) vimpp;
   };
 
   polybar = unstable.polybar.override {

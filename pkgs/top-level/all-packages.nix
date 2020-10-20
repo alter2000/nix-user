@@ -17,6 +17,7 @@ let
 
   ghcide = import (builtins.fetchTarball "https://github.com/cachix/ghcide-nix/tarball/master") {};
 
+  unstable = import (fetchTarball "channel:nixpkgs-unstable") { inherit (self) config; }
 in
 rec {
 
@@ -35,5 +36,6 @@ rec {
     ghcide
   ;
 
+  inherit unstable;
 
 }
