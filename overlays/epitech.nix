@@ -21,14 +21,17 @@ self: super:
   epiBuildPkgs = ( super.epiBuildPkgs or {} ) // {
     inherit (self)
       gnumake
-      cmake
-      bear
+      cmake-format
+      # cmake
+      cmakeCurses
+      # bear
       pkg-config
 
       nasm
       gcc-unwrapped
       binutils-unwrapped
     ;
+    inherit (self.pythonPackages) compiledb;
   };
 
   epiTestPkgs = ( super.epiTestPkgs or {} ) // {

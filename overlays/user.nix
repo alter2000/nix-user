@@ -77,6 +77,7 @@ in {
       tig
     ;
 
+    inherit (self) neovim;
     # inherit (own) xmonad;
   }
   // self.gamePkgs

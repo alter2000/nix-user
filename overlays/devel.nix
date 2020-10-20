@@ -2,8 +2,8 @@ self: super:
 
 let
   unstable = import (fetchTarball
-      "channel:nixpkgs-unstable"
-      # "https://github.com/nixos/nixpkgs/master"
+      # "channel:nixpkgs-unstable"
+      "https://github.com/nixos/nixpkgs/tarball/master"
     ) { inherit (self) config; };
 in
 {
@@ -22,20 +22,23 @@ in
     inherit (self) nix-prefetch-scripts;
   }
   // self.asstPkgs
+  // self.cPkgs
   // self.lintPkgs
+  // self.luaPkgs
   // self.pyPkgs
   // self.rubyPkgs
-  // self.rustPkgs
+  // self.androidPkgs
+  # // self.rustPkgs
   ;
 
   cPkgs = ( super.cPkgs or {} ) // {
     inherit (self)
       vagrant
       platformio
-
       # binutils
     ;
     inherit (unstable) ccls;
+    inherit (unstable) clang-tools;
     clang = super.hiPrio self.clang;
   };
 
@@ -43,6 +46,12 @@ in
     inherit (self)
       rustup
     ;
+  };
+
+  luaPkgs = ( super.luaPkgs or {} ) // {
+    luaEnv = self.luajit.withPackages (ps: with ps; [
+      moonscript
+    ]);
   };
 
   rubyPkgs = ( super.rubyPkgs or {} ) // {
@@ -53,26 +62,26 @@ in
   };
 
   pyPkgs = ( super.pyPkgs or {} ) // {
-    pyEnv = self.python37.withPackages (ps: with ps; [
+    pyEnv = self.python38.withPackages (ps: with ps; [
       ipython
       ipdb
-      python
       pip
       virtualenv
-      requests
+      # requests
 
       yapf
       pylint
       flake8
 
+      youtube-dl
       goobook
-      mps-youtube
-      python-language-server
+      # python-language-server
       jedi
       # neovim
+      (super.callPackage ../pkgs/conan {})
     ]);
     # tim = (super.callPackage ../pkgs/tim.nix);
-    # mypy = self.mypy;
+    # inherit (self) mypy;
   };
 
   jetbrainsPkgs = ( super.jetbrainsPkgs or {} ) // {
@@ -85,10 +94,10 @@ in
   };
 
   androidPkgs = ( super.androidPkgs or {} ) // {
-    inherit (self)
+    inherit (unstable)
       android-studio
       apktool
-      genymotion
+      # genymotion
     ;
   };
 
