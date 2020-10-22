@@ -15,6 +15,10 @@ let
       sha256 = "0i6ysnypvva4yss68zsabmkqgynl88iilrr47c00bl1kg962ikmi";
     }) { inherit (self) pkgs; };
 
+  nvim-nightly = import (builtins.fetchTarball {
+    url = https://github.com/mjlbach/neovim-nightly-overlay/archive/master.tar.gz;
+  }) {} {};
+
 in {
   inherit own;
   inherit unstable;
@@ -65,6 +69,15 @@ in {
     ]);
     # [ "python3" "X11" "xfontset" "autoservername" ];
   });
+
+  nvimpp = self.wrapNeovim nvim-nightly.neovim-nightly {
+    viAlias = false;
+    vimAlias = true;
+    withNodeJs = true;
+    withPython = false;
+    withPython3 = true;
+    withRuby = false;
+  };
 
   # sudo = super.sudo.override { withInsults = true; };
 
