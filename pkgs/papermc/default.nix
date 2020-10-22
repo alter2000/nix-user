@@ -1,11 +1,11 @@
 { stdenv, fetchurl, jre }:
 let
-  mcVersion = "1.16.1";
+  mcVersion = "1.16.3";
   execOpts = "nogui";
-  buildNum = "19";
+  buildNum = "244";
   jar = fetchurl {
     url = "https://papermc.io/api/v1/paper/${mcVersion}/${buildNum}/download";
-    sha256 = "0sz6v2w9ik7nw78lg3f835a283iqa36gx85l2h32cvc4jrh72xvi";
+    sha256 = "1ky4l8y5lkzkipzs0ha7797hx9hr5lnji6vwjvq490059i7ajihq";
   };
 in
 stdenv.mkDerivation {
@@ -32,6 +32,6 @@ stdenv.mkDerivation {
     homepage    = "https://papermc.io/";
     license     = stdenv.lib.licenses.gpl3;
     platforms   = stdenv.lib.platforms.unix;
-    maintainers = with stdenv.lib.maintainers; [ aaronjanse hazel ];
+    maintainers = with stdenv.lib.maintainers; [ aaronjanse ];
   };
 }
