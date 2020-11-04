@@ -31,8 +31,8 @@ self: super:
       platformio
       # binutils
     ;
-    inherit (self.master) ccls;
-    inherit (self.master) clang-tools;
+    inherit (self.unstable) ccls;
+    inherit (self.unstable) clang-tools;
     clang = super.hiPrio self.clang;
   };
 
@@ -43,7 +43,7 @@ self: super:
   };
 
   luaPkgs = ( super.luaPkgs or {} ) // {
-    luaEnv = self.master.luajit.withPackages (ps: with ps; [
+    luaEnv = self.unstable.luajit.withPackages (ps: with ps; [
       moonscript
       # fennel
       compat53
@@ -98,7 +98,7 @@ self: super:
   };
 
   androidPkgs = ( super.androidPkgs or {} ) // {
-    inherit (self.master)
+    inherit (self.unstable)
       android-studio
       apktool
       # genymotion

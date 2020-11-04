@@ -36,7 +36,10 @@ in {
       alacritty
       gnupg
       hledger
+    ;
+    inherit (own) neuron neuron-language-server;
 
+    inherit (self)
       msmtp
       notmuch
       offlineimap
