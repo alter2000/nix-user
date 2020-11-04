@@ -83,7 +83,6 @@ in {
     inherit (self) nvimpp;
     # inherit (own) xmonad;
   }
-  // self.gamePkgs
   // self.filePkgs
   // self.streamPkgs
   ;
@@ -129,13 +128,6 @@ in {
       # pkgFilter = pkg: pkg.tlType == "run" || pkg.tlType == "bin" || pkg.pname == "cm-super";
     };
 
-  };
-
-  gamePkgs = ( super.gamePkgs or {} ) // {
-    inherit (self)
-      teeworlds
-      steam
-    ;
   };
 
   streamPkgs = ( super.streamPkgs or {} ) // {

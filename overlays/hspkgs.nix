@@ -17,7 +17,6 @@ in
 {
   haskellPkgs = ( super.haskellPkgs or {} ) // {
     henv = hspkgset.ghcWithHoogle (ps: with ps; [
-      hasktags
       stylish-haskell
       # threadscope
       unlit
@@ -27,7 +26,6 @@ in
     ] ++ hsLibs ps);
 
     inherit (self)
-      hlint
       stack
       cabal-install
       cabal2nix

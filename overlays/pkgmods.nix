@@ -11,6 +11,7 @@ let
 
   own = import ../pkgs/top-level/all-packages.nix { inherit (self) system; };
 
+  # XXX: needs fixing of nix expressions, breaks evaluation of everything else
   nur = import (super.fetchFromGitHub {
       owner = "nix-community";
       repo = "NUR";
