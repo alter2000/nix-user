@@ -45,6 +45,16 @@ self: super:
   luaPkgs = ( super.luaPkgs or {} ) // {
     luaEnv = self.master.luajit.withPackages (ps: with ps; [
       moonscript
+      # fennel
+      compat53
+      # luarocks
+      luarocks-nix
+      luadoc
+
+      # lustache
+      # magick
+      # luafun
+      # lunix
     ]);
   };
 
