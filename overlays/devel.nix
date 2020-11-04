@@ -127,6 +127,7 @@ self: super:
       nix-index
       ttyplot
       # niv
+      tmate
       gnumake
     ;
   };

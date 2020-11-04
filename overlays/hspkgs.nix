@@ -23,6 +23,7 @@ in
       # patat
       # arbtt
       pretty-simple
+      hpc-lcov
     ] ++ hsLibs ps);
 
     inherit (self)
