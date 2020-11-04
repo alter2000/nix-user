@@ -1,11 +1,6 @@
 self: super:
 
 let
-  unstable = import (fetchTarball
-      "channel:nixpkgs-unstable"
-      # https://github.com/nixos/nixpkgs/master
-    ) { inherit (self) config; };
-
   obSrc = import (super.fetchFromGitHub {
       owner = "obsidiansystems";
       repo = "obelisk";
@@ -52,7 +47,7 @@ in
       zephyr
     ;
 
-    inherit (unstable.nodePackages)
+    inherit (self.unstable.nodePackages)
       purescript-language-server
       purescript-psa
     ;

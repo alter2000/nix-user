@@ -15,6 +15,8 @@ let
   neuron = ghPkg "srid/neuron";
   # neuronSrc = fetchGit { url = "https://github.com/srid/neuron"; ref = "master"; };
 
+  neuron-language-server = ghPkg "aca/neuron-language-server";
+
   ghcide = import (builtins.fetchTarball "https://github.com/cachix/ghcide-nix/tarball/master") {};
 
   unstable = import (fetchTarball "channel:nixpkgs-unstable") { inherit (pkgs) config; };
@@ -34,6 +36,7 @@ rec {
     snack
     pboy
     neuron
+    neuron-language-server
     ghcide
   ;
 

@@ -63,6 +63,7 @@ in {
       jdk
       tdesktop
       weechat
+      polybar
       # mattermost-desktop
     ;
 
@@ -78,6 +79,7 @@ in {
       tig
     ;
 
+    inherit (self) neovim-qt;
     inherit (self) nvimpp;
     # inherit (own) xmonad;
   }

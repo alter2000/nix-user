@@ -3,7 +3,10 @@ self: super:
 let
   unstable = import (fetchTarball
       "channel:nixpkgs-unstable"
-      # "https://github.com/nixos/nixpkgs/master"
+    ) { inherit (self) config; };
+
+  master = import (fetchTarball
+      "https://github.com/NixOS/nixpkgs/archive/master.tar.gz"
     ) { inherit (self) config; };
 
   own = import ../pkgs/top-level/all-packages.nix { inherit (self) system; };
@@ -22,10 +25,10 @@ let
 in {
   inherit own;
   inherit unstable;
-  inherit nur;
+  inherit master;
 
   unstablePkgs = ( super.unstablePkgs or {} ) // {
-    inherit (unstable)
+    inherit (master)
       minecraft
       niv
       kitty
@@ -35,7 +38,7 @@ in {
     # inherit (self) vimpp;
   };
 
-  polybar = unstable.polybar.override {
+  polybar = super.polybar.override {
     githubSupport = true;
     mpdSupport = true;
     pulseSupport = true;

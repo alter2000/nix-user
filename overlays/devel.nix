@@ -1,11 +1,5 @@
 self: super:
 
-let
-  unstable = import (fetchTarball
-      # "channel:nixpkgs-unstable"
-      "https://github.com/nixos/nixpkgs/tarball/master"
-    ) { inherit (self) config; };
-in
 {
   devPkgs = ( super.devPkgs or {} ) // {
     inherit (self)
@@ -37,8 +31,8 @@ in
       platformio
       # binutils
     ;
-    inherit (unstable) ccls;
-    inherit (unstable) clang-tools;
+    inherit (self.master) ccls;
+    inherit (self.master) clang-tools;
     clang = super.hiPrio self.clang;
   };
 
@@ -49,7 +43,7 @@ in
   };
 
   luaPkgs = ( super.luaPkgs or {} ) // {
-    luaEnv = self.luajit.withPackages (ps: with ps; [
+    luaEnv = self.master.luajit.withPackages (ps: with ps; [
       moonscript
     ]);
   };
@@ -94,7 +88,7 @@ in
   };
 
   androidPkgs = ( super.androidPkgs or {} ) // {
-    inherit (unstable)
+    inherit (self.master)
       android-studio
       apktool
       # genymotion
