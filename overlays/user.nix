@@ -37,7 +37,8 @@ in {
       gnupg
       hledger
     ;
-    inherit (own) neuron neuron-language-server;
+
+    inherit (own) neuron;
 
     inherit (self)
       msmtp

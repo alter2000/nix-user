@@ -11,6 +11,8 @@ self: super:
       radare2-cutter
       appimage-run
       docker-compose
+      kubectl k9s kustomize
+      doctl
     ;
     inherit (self.ncurses) dev;
   }
