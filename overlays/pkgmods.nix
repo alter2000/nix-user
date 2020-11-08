@@ -35,7 +35,7 @@ in {
       kitty
     ;
 
-    inherit (own.ghcide) ghcide-ghc884;
+    # inherit (own.ghcide) ghcide-ghc884;
     # inherit (self) vimpp;
   };
 
@@ -84,5 +84,4 @@ in {
   };
 
   # sudo = super.sudo.override { withInsults = true; };
-
 }
