@@ -121,7 +121,7 @@ self: super:
       pciutils
       inetutils
       sysstat
-      pstree
+      psmisc
       dfc
       lsof
       nix-index

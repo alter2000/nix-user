@@ -1,5 +1,9 @@
 self: super:
 
+let old = import (fetchTarball
+      "channel:nixos-20.03"
+    ) { inherit (self) config; };
+in
 {
   epiPkgs = ( super.epiPkgs or {} ) // {
     inherit (self)
@@ -44,5 +48,6 @@ self: super:
       # github-cli
       # gitkraken
     ;
+    inherit (old) postman;
   };
 }
