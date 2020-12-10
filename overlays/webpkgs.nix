@@ -41,11 +41,11 @@ in
       purs
       pscid
       purp
-      # pulp
+      pulp
       purty
-      # psc-package
+      psc-package
       spago
-      zephyr
+      # zephyr
     ;
 
     inherit (self.unstable.nodePackages)
