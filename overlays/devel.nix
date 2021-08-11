@@ -20,7 +20,7 @@ self: super:
   // self.lintPkgs
   // self.luaPkgs
   // self.pyPkgs
-  // self.rubyPkgs
+  # // self.rubyPkgs
   // self.androidPkgs
   # // self.rustPkgs
   ;
@@ -28,7 +28,7 @@ self: super:
   cPkgs = ( super.cPkgs or {} ) // {
     inherit (self)
       vagrant
-      platformio
+      # platformio
       # binutils
     ;
     inherit (self.unstable) ccls;
@@ -81,7 +81,6 @@ self: super:
       goobook
       # python-language-server
       jedi
-      # neovim
       (super.callPackage ../pkgs/conan {})
     ]);
     # tim = (super.callPackage ../pkgs/tim.nix);
@@ -89,7 +88,7 @@ self: super:
   };
 
   jetbrainsPkgs = ( super.jetbrainsPkgs or {} ) // {
-    inherit (self)
+    inherit (self.jetbrains)
       clion
       datagrip
       pycharm-professional
@@ -100,20 +99,14 @@ self: super:
   androidPkgs = ( super.androidPkgs or {} ) // {
     inherit (self.unstable)
       android-studio
-      apktool
+      # apktool
       # genymotion
     ;
   };
 
   c68Pkgs = ( super.c68Pkgs or {} ) // {
-    inherit (self)
-      ansible
-      bind
-    ;
-
-    inherit (self.python37Packages)
-      yamllint
-    ;
+    inherit (self) ansible bind;
+    inherit (self.python37Packages) yamllint;
   };
 
   asstPkgs = ( super.asstPkgs or {} ) // {
@@ -126,9 +119,9 @@ self: super:
       lsof
       nix-index
       ttyplot
-      # niv
-      tmate
       gnumake
+      # niv
+      # tmate
     ;
   };
 
@@ -139,9 +132,9 @@ self: super:
       vim-vint
       shfmt
       shellcheck
-      htmlTidy
+      # htmlTidy
       universal-ctags
-      texlab
+      # texlab
       # nix-direnv
     ;
     inherit (self.nodePackages) bash-language-server;

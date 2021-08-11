@@ -1,8 +1,6 @@
 self: super:
 
-let old = import (fetchTarball
-      "channel:nixos-20.03"
-    ) { inherit (self) config; };
+let
 in
 {
   epiPkgs = ( super.epiPkgs or {} ) // {
@@ -15,7 +13,7 @@ in
       radare2-cutter
       appimage-run
       docker-compose
-      kubectl k9s kustomize
+      # kubectl k9s kustomize
       doctl
     ;
     inherit (self.ncurses) dev;
@@ -45,9 +43,9 @@ in
       gdb
       valgrind
       netcat
+      pgmanage
       # github-cli
       # gitkraken
     ;
-    inherit (old) postman;
   };
 }

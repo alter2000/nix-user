@@ -11,17 +11,9 @@ let
 
   own = import ../pkgs/top-level/all-packages.nix { inherit (self) system; };
 
-  # XXX: needs fixing of nix expressions, breaks evaluation of everything else
-  nur = import (super.fetchFromGitHub {
-      owner = "nix-community";
-      repo = "NUR";
-      rev = "a222153291e7754422a6c287f6f441b6cea6e0b6";
-      sha256 = "0i6ysnypvva4yss68zsabmkqgynl88iilrr47c00bl1kg962ikmi";
-    }) { inherit (self) pkgs; };
-
   nvim-nightly = import (builtins.fetchTarball {
     url = https://github.com/mjlbach/neovim-nightly-overlay/archive/master.tar.gz;
-  }) {} {};
+  }) self super;
 
 in {
   inherit own;
@@ -31,11 +23,8 @@ in {
   unstablePkgs = ( super.unstablePkgs or {} ) // {
     inherit (master)
       minecraft
-      niv
       kitty
     ;
-
-    # inherit (own.ghcide) ghcide-ghc884;
     # inherit (self) vimpp;
   };
 
@@ -49,12 +38,12 @@ in {
 
   ncmpcpp = super.ncmpcpp.override { visualizerSupport = true; };
 
-  torbrowser = super.lib.overrideDerivation super.torbrowser (old: {
-    src = super.fetchurl {
-      url = "https://dist.torproject.org/torbrowser/9.5.4/tor-browser-linux64-9.5.4_en-US.tar.xz";
-      sha256 = "0kkgsra7rgy167h8jh54gjn8ncajbj9krqfmqcvcba700kdq2vax";
-    };
-  });
+  # torbrowser = super.lib.overrideDerivation super.torbrowser (old: {
+  #   src = super.fetchurl {
+  #     url = "https://dist.torproject.org/torbrowser/10.5.4/tor-browser-linux64-10.5.4_en-US.tar.xz";
+  #     sha256 = "0000000000000000000000000000000000000000000000000000";
+  #   };
+  # });
 
   tmux = super.lib.overrideDerivation super.tmux (old: {
     buildInputs = old.buildInputs ++ [ super.utf8proc ];

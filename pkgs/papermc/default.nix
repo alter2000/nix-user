@@ -1,4 +1,4 @@
-{ stdenv, fetchurl, jre }:
+{ pkgs, fetchurl, jre }:
 let
   mcVersion = "1.16.3";
   execOpts = "nogui";
@@ -8,7 +8,7 @@ let
     sha256 = "1ky4l8y5lkzkipzs0ha7797hx9hr5lnji6vwjvq490059i7ajihq";
   };
 in
-stdenv.mkDerivation {
+pkgs.mkDerivation {
   pname = "papermc";
   version = "${mcVersion}r${buildNum}";
 
@@ -30,8 +30,8 @@ stdenv.mkDerivation {
   meta = {
     description = "High-performance Minecraft Server";
     homepage    = "https://papermc.io/";
-    license     = stdenv.lib.licenses.gpl3;
-    platforms   = stdenv.lib.platforms.unix;
-    maintainers = with stdenv.lib.maintainers; [ aaronjanse ];
+    license     = pkgs.lib.licenses.gpl3;
+    platforms   = pkgs.lib.platforms.unix;
+    maintainers = with pkgs.lib.maintainers; [ aaronjanse ];
   };
 }

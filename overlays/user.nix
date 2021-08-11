@@ -16,7 +16,6 @@ in {
         devPkgs
         epiPkgs
         haskellPkgs
-        haskellPkgs.henv
         userPackages
         unstablePkgs
         webPkgs
@@ -27,12 +26,10 @@ in {
     '';
 
     inherit (self)
-      # busybox
       alsaUtils
       jrnl
       keynav
       sxhkd
-      # firefox
       alacritty
       gnupg
       hledger
@@ -73,7 +70,7 @@ in {
 
     inherit (self.xorg)
       xinit
-      xkbcomp
+      # xkbcomp
     ;
 
     inherit (self.gitAndTools)
@@ -85,10 +82,11 @@ in {
 
     inherit (self) neovim-qt;
     inherit (self) nvimpp;
+    inherit (self.unstable) chiaki;
     # inherit (own) xmonad;
   }
   // self.filePkgs
-  // self.streamPkgs
+  # // self.streamPkgs
   ;
 
   filePkgs = ( super.filePkgs or {} ) // {

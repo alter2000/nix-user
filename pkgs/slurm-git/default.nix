@@ -1,6 +1,6 @@
-{ stdenv, fetchFromGitHub, cmake, ncurses }:
+{ pkgs, fetchFromGitHub, cmake, ncurses }:
 
-stdenv.mkDerivation rec {
+pkgs.mkDerivation rec {
   name = "slurm-git-${version}";
   version = "0.4.3";
 
@@ -15,7 +15,7 @@ stdenv.mkDerivation rec {
   buildInputs = [ cmake ];
   propagatedBuildInputs = [ ncurses ];
 
-  meta = with stdenv.lib; {
+  meta = with pkgs.lib; {
     homepage = "https://github.com/mattthias/slurm";
     description = "Yet another network load monitor";
     # maintainers = [ maintainers.infinisil ];

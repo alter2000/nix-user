@@ -1,7 +1,7 @@
 self: super:
 
 let
-  hspkgset = self.haskell.packages.ghc884;
+  hspkgset = self.haskellPackages;
 
   # TODO: add these to the global project
   hsLibs = p: with p; [
@@ -13,8 +13,7 @@ let
     text
     turtle
   ];
-in
-{
+in {
   haskellPkgs = ( super.haskellPkgs or {} ) // {
     henv = hspkgset.ghcWithHoogle (ps: with ps; [
       # arbtt
@@ -23,18 +22,17 @@ in
       unlit
       pretty-simple
       hpc-lcov
+      implicit-hie
     ] ++ hsLibs ps);
 
     inherit (self)
       stack
       cabal-install
       cabal2nix
+      hlint
     ;
-    inherit (self.unstable) hlint;
     inherit (self.unstable.haskellPackages)
-      implicit-hie
       haskell-language-server
     ;
-  }
-  ;
+  };
 }
