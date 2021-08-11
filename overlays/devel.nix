@@ -11,8 +11,6 @@ self: super:
       tcsh
     ;
 
-    inherit (self) virtmanager;
-
     inherit (self) nix-prefetch-scripts;
   }
   // self.asstPkgs
