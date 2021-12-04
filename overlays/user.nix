@@ -35,7 +35,7 @@ in {
       hledger
     ;
 
-    inherit (own) neuron;
+    inherit (own) emanote;
 
     inherit (self)
       msmtp

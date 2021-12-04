@@ -10,10 +10,7 @@ let
   # 1.4 broken
   pboy   = ghPkg "2mol/pboy";
 
-  neuron = ghPkg "srid/neuron";
-
-  # neuronSrc = fetchGit { url = "https://github.com/srid/neuron"; ref = "master"; };
-  # neuron-language-server = ghPkg "aca/neuron-language-server";
+  emanote = ghPkg "srid/emanote";
 
   ghcide = import (builtins.fetchTarball "https://github.com/cachix/ghcide-nix/tarball/master") {};
 
@@ -32,7 +29,7 @@ rec {
 
   inherit
     pboy
-    neuron
+    emanote
     ghcide
   ;
 
