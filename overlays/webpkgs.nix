@@ -29,7 +29,7 @@ in
       # bower
     ;
   }
-  // self.purescriptPkgs
+  # // self.purescriptPkgs
   ;
 
   reflexPkgs = ( super.reflexPkgs or {} ) // {

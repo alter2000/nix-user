@@ -1,7 +1,7 @@
 self: super:
 
 let
-  hspkgset = self.haskellPackages;
+  hspkgset = self.haskell.packages.ghc8107;
 
   # TODO: add these to the global project
   hsLibs = p: with p; [
@@ -11,7 +11,7 @@ let
     filepath
     mtl
     text
-    turtle
+    # turtle
   ];
 in {
   haskellPkgs = ( super.haskellPkgs or {} ) // {
@@ -31,8 +31,8 @@ in {
       cabal2nix
       hlint
     ;
-    inherit (self.unstable.haskellPackages)
-      haskell-language-server
-    ;
+    haskell-language-server = self.unstable.haskell-language-server.override {
+      supportedGhcVersions = [ "8107" "901" ];
+    };
   };
 }

@@ -19,7 +19,7 @@ self: super:
   // self.luaPkgs
   // self.pyPkgs
   # // self.rubyPkgs
-  // self.androidPkgs
+  # // self.androidPkgs
   # // self.rustPkgs
   ;
 
@@ -45,9 +45,8 @@ self: super:
       moonscript
       # fennel
       compat53
-      # luarocks
-      luarocks-nix
-      luadoc
+      luarocks
+      # luadoc
 
       # lustache
       # magick
@@ -57,14 +56,14 @@ self: super:
   };
 
   rubyPkgs = ( super.rubyPkgs or {} ) // {
-    ruby = self.ruby_2_6;
+    ruby = self.ruby_3_0;
     bundix = self.bundix.overrideAttrs (old: {
-      ruby = self.ruby_2_6;
+      ruby = self.ruby_3_0;
     });
   };
 
   pyPkgs = ( super.pyPkgs or {} ) // {
-    pyEnv = self.python38.withPackages (ps: with ps; [
+    pyEnv = self.python39.withPackages (ps: with ps; [
       ipython
       ipdb
       pip
