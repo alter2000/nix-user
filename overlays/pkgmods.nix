@@ -23,9 +23,8 @@ in {
   unstablePkgs = ( super.unstablePkgs or {} ) // {
     inherit (master)
       minecraft
-      kitty
     ;
-    # inherit (self) vimpp;
+    inherit (unstable) kitty;
   };
 
   polybar = super.polybar.override {
@@ -39,11 +38,12 @@ in {
   ncmpcpp = super.ncmpcpp.override { visualizerSupport = true; };
 
   # torbrowser = super.lib.overrideDerivation super.torbrowser (old: {
-  #   src = super.fetchurl {
-  #     url = "https://dist.torproject.org/torbrowser/10.5.4/tor-browser-linux64-10.5.4_en-US.tar.xz";
-  #     sha256 = "0000000000000000000000000000000000000000000000000000";
-  #   };
-  # });
+  #     src = super.fetchurl {
+  #       url = "https://dist.torproject.org/torbrowser/11.0.2/tor-browser-linux64-11.0.2_en-US.tar.xz";
+  #       sha256 = "1bqlb8dlh92dpl9gmfh3yclq5ii09vv333yisa0i5gpwwzajnh5s";
+  #     };
+  #     useHardenedMalloc = false;
+  #   });
 
   tmux = super.lib.overrideDerivation super.tmux (old: {
     buildInputs = old.buildInputs ++ [ super.utf8proc ];

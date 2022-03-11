@@ -18,14 +18,10 @@ in
 {
   webPkgs = ( super.webPkgs or {} ) // {
     inherit (self.nodePackages)
-      pnpm
       yarn
-      create-react-app
-      create-react-native-app
-      # tsserver
-      # prettier
+      typescript-language-server
       csslint
-      # parcel-bundler
+      # prettier
       # bower
     ;
   }

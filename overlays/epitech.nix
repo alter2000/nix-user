@@ -5,14 +5,9 @@ in
 {
   epiPkgs = ( super.epiPkgs or {} ) // {
     inherit (self)
-      manpages
       icdiff
-      inkscape
       sourcetrail
       direnv
-      radare2-cutter
-      appimage-run
-      docker-compose
       kubectl k9s
       kubernetes-helm
       azure-cli
@@ -26,7 +21,6 @@ in
   epiBuildPkgs = ( super.epiBuildPkgs or {} ) // {
     inherit (self)
       gnumake
-      cmake-format
       # cmake
       cmakeCurses
       # bear

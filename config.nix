@@ -13,5 +13,5 @@
     # ./emacs.nix  # why oh why
   ];
 
-  # oraclejdk = { accept_license = true; pluginSupport = true; }
+  oraclejdk = { accept_license = true; pluginSupport = true; };
 }

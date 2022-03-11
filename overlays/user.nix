@@ -14,7 +14,6 @@ in {
       fi
       PENV=(
         devPkgs
-        epiPkgs
         haskellPkgs
         userPackages
         unstablePkgs
@@ -60,9 +59,7 @@ in {
     ;
 
     inherit (self)
-      termite
       jdk
-      tdesktop
       weechat
       polybar
       # mattermost-desktop
@@ -82,7 +79,7 @@ in {
 
     inherit (self) neovim-qt;
     inherit (self) nvimpp;
-    inherit (self.unstable) chiaki;
+    inherit (self.unstable) chiaki tdesktop;
     # inherit (own) xmonad;
   }
   // self.filePkgs
@@ -124,6 +121,8 @@ in {
       pulsemixer
       zathura
     ;
+
+    inherit (self) gpick;
 
     myTexlive = super.texlive.combine {
       inherit (self.texlive) scheme-full noto;

@@ -25,12 +25,11 @@ self: super:
 
   cPkgs = ( super.cPkgs or {} ) // {
     inherit (self)
-      vagrant
+      # vagrant
       # platformio
       # binutils
     ;
-    inherit (self.unstable) ccls;
-    inherit (self.unstable) clang-tools;
+    inherit (self.unstable) ccls clang-tools;
     clang = super.hiPrio self.clang;
   };
 
@@ -74,8 +73,8 @@ self: super:
       pylint
       flake8
 
-      youtube-dl
-      goobook
+      yt-dlp
+      # goobook
       # python-language-server
       jedi
       (super.callPackage ../pkgs/conan {})
@@ -125,15 +124,22 @@ self: super:
   lintPkgs = ( super.lintPkgs or {} ) // {
     inherit (self)
       nodejs
-      ansible-lint
-      vim-vint
+      # ansible-lint
+      # vim-vint
       shfmt
       shellcheck
       # htmlTidy
       universal-ctags
       # texlab
       # nix-direnv
+      # cmake-language-server
+      rnix-lsp
     ;
-    inherit (self.nodePackages) bash-language-server;
+    inherit (self.nodePackages)
+      bash-language-server
+      pyright
+      vscode-langservers-extracted
+      # dockerfile-language-server-nodejs
+    ;
   };
 }
